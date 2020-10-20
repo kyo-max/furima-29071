@@ -12,7 +12,7 @@
 | first_name      | string  | null: false                                       |
 | last_name_kana  | string  | null: false                                       |
 | first_name_kana | string  | null: false                                       |
-| birthday        | integer | null: false                                       |
+| birthday        | date    | null: false                                       |
 
 ### Association
 
@@ -21,17 +21,16 @@
 
 ## items テーブル
 
-| Column              | Type    |     Options |
-| ------------------- | ------- | ----------- |
-| image               | string  | null: false |
-| item_name           | string  | null: false |
-| description         | text    | null: false |
-| category            | integer | null: false |
-| item_status         | integer | null: false |
-| shipping_fee_bearer | integer | null: false |
-| shipping_area       | integer | null: false |
-| ship_day            | integer | null: false |
-| price               | integer | null: false |
+| Column                 | Type    |     Options |
+| ---------------------- | ------- | ----------- |
+| item_name              | string  | null: false |
+| description            | text    | null: false |
+| category_id            | integer | null: false |
+| item_status_id         | integer | null: false |
+| shipping_fee_bearer_id | integer | null: false |
+| shipping_area_id       | integer | null: false |
+| ship_day_id            | integer | null: false |
+| price                  | integer | null: false |
 
 ### Association
 
@@ -40,19 +39,28 @@
 
 ## buyers テーブル
 
-| Column         | Type | Options |
-| -------------- |
+| Column         | Type    | Options     |
+| -------------- | ------- | ----------- |
 | user_id        | integer | null: false |
 | item_id        | integer | null: false |
-| card_id        | string  | null: false |
-| postal_code    | string  | null: false |
-| prefectures    | string  | null: false |
-| municipality   | string  | null: false |
-| block_number   | string  | null: false |
-| apartment_name | string  |             |
-| phone_number   | integer | null: false |
 
 ### Association
 
 - belongs_to :users
 - belongs_to :items
+- has_one    :addresses
+
+## addresses テーブル
+
+| Column         | Type    | Options     |
+| -------------- | ------- | ----------- |
+| postal_code    | string  | null: false |
+| prefectures_id | integer | null: false |
+| municipality   | string  | null: false |
+| block_number   | string  | null: false |
+| apartment_name | string  |             |
+| phone_number   | string  | null: false |
+
+### Association
+
+- belongs_to :buyers
