@@ -39,8 +39,8 @@
 
 ## buyers テーブル
 
-| Column  | Type       | Options     |
-| ------- | ---------- | ----------- |
+| Column  | Type       | Options                       |
+| ------- | ---------- | ----------------------------- |
 | user    | references | null: false,foreign_key: true |
 | item    | references | null: false,foreign_key: true |
 
