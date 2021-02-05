@@ -7,7 +7,7 @@ class User < ApplicationRecord
   with_options presence: true do
     validates :nickname
     validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i, message: 'は半角英数字を含む6文字以上で入力してください。' }
-    
+
     with_options format: { with: /\A[ぁ-んァ-ン一-龥]/, message: 'は全角で入力してください。' } do
       validates :last_name
       validates :first_name
@@ -17,8 +17,7 @@ class User < ApplicationRecord
       validates :last_name_kana
       validates :first_name_kana
     end
-    
-    
+
     validates :birthday
   end
 end
