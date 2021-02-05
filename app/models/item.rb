@@ -18,6 +18,7 @@ class Item < ApplicationRecord
   end
 
   with_options presence: true do
+    validates :image
     validates :name
     validates :description
     validates :price, format: { with: /\A[0-9]+\z/ },
@@ -25,11 +26,5 @@ class Item < ApplicationRecord
               greater_than_or_equal_to: 300,
               less_than_or_equal_to: 9_999_999
               }
-  end
-
-  validates :image, presence: true, unless: :was_attached?
-
-  def was_attached?
-    image.attached?
   end
 end
