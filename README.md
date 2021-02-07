@@ -60,7 +60,7 @@
 | block_number   | string     | null: false                    |
 | apartment_name | string     |                                |
 | phone_number   | string     | null: false                    |
-| buyer          | references | null: false ,foreign_key: true |
+| order          | references | null: false ,foreign_key: true |
 
 ### Association
 
