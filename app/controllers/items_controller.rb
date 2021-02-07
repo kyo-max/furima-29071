@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_item, only: [:show, :edit]
 
   def index
     @items = Item.all
@@ -19,15 +20,19 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
   end
 
   def edit
-    @item = Item.find(params[:id])
+    if user_signed_in?
+      if current_user.id == @item.user_id
+      else
+        render :index
+      end
+    end
   end
 
   def update
-    @item = Item.find(params[:id])
+    set_item
     if @item.update(item_params)
       redirect_to item_path
     else
@@ -50,5 +55,9 @@ class ItemsController < ApplicationController
       :price
     )
           .merge(user_id: current_user.id)
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 end
