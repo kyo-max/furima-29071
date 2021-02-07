@@ -23,10 +23,8 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    if user_signed_in?
-      unless current_user.id == @item.user_id
-        render :index
-      end
+    unless current_user.id == @item.user_id
+      render :index
     end
   end
 
