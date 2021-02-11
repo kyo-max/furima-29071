@@ -12,7 +12,7 @@ class OrdersController < ApplicationController
       @order_address.save
       redirect_to root_path
     else
-      redirect_to item_orders_path(@item.id)
+      render :index
     end
   end
 
