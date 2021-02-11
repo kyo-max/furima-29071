@@ -45,6 +45,6 @@ class OrdersController < ApplicationController
   end
 
   def set_user
-    current_user.id == @item.user_id
+    current_user.id == @item.user_id || @item.order != nil
   end
 end
