@@ -37,10 +37,10 @@ ActiveRecord::Schema.define(version: 2021_02_07_124747) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "postal_code", null: false
-    t.integer "prefectures_id", null: false
-    t.string "municipality", null: false
-    t.string "block_number", null: false
-    t.string "apartment_name"
+    t.integer "prefecture_id", null: false
+    t.string "city", null: false
+    t.string "house_number", null: false
+    t.string "building_name"
     t.string "phone_number", null: false
     t.bigint "order_id", null: false
     t.index ["order_id"], name: "index_addresses_on_order_id"
